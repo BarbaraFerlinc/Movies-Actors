@@ -1,4 +1,4 @@
-package com.example.movies.domain;
+package com.example.domain;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;

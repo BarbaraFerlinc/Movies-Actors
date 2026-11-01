@@ -1,7 +1,7 @@
-package com.example.movies.dto;
+package com.example.dto;
 
-import com.example.movies.domain.Actor;
-import com.example.movies.domain.Movie;
+import com.example.domain.Actor;
+import com.example.domain.Movie;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
