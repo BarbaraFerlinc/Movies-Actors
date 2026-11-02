@@ -4,6 +4,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
@@ -44,6 +45,25 @@ class ActorResourceTest {
                 .body(Map.of("firstName", "", "lastName", "X", "birthDate", "2999-01-01"))
                 .post("/api/actors")
                 .then().statusCode(400);
+    }
+
+    @Test
+    void picturesArePersistedAndUpdated() {
+        int id = given().contentType(JSON)
+                .body(Map.of("firstName", "Pic", "lastName", "Tester",
+                        "pictures", List.of("https://example.com/a.jpg", "https://example.com/b.jpg")))
+                .post("/api/actors")
+                .then().statusCode(201)
+                .body("pictures", hasSize(2))
+                .extract().path("id");
+
+        given().get("/api/actors/{id}", id)
+                .then().body("pictures", hasItems("https://example.com/a.jpg", "https://example.com/b.jpg"));
+
+        given().contentType(JSON)
+                .body(Map.of("firstName", "Pic", "lastName", "Tester", "pictures", List.of()))
+                .put("/api/actors/{id}", id)
+                .then().statusCode(200).body("pictures", empty());
     }
 
     @Test
