@@ -9,7 +9,7 @@ import jakarta.ws.rs.ext.Provider;
 import java.util.Map;
 
 @Provider
-public class ConcurrencyExceptionMapper implements ExceptionMapper<OptimisticLockException> {
+public class ConflictExceptionMapper implements ExceptionMapper<OptimisticLockException> {
 
     @Override
     public Response toResponse(OptimisticLockException e) {

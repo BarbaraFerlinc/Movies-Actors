@@ -46,6 +46,7 @@ public class ActorService {
     public ActorDto update(Long id, ActorDto dto) {
         Actor actor = find(id);
         apply(actor, dto);
+        actor.flush();
         return ActorDto.from(actor);
     }
 

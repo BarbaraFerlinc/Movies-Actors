@@ -55,6 +55,7 @@ public class MovieService {
     public MovieDto update(String imdbId, MovieDto dto) {
         Movie movie = find(imdbId);
         apply(movie, dto);
+        movie.flush();
         return MovieDto.from(movie);
     }
 

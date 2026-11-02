@@ -1,4 +1,4 @@
-package com.example.movies.dto;
+package com.example.dto;
 
 import java.util.List;
 
