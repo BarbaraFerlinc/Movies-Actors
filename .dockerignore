@@ -1,9 +1,6 @@
-*
-!target/*-runner
-!target/*-runner.jar
-!target/lib/*
-!target/quarkus-app/*
-
 target/
-data/
 .git/
+.idea/
+.vscode/
+*.iml
+.DS_Store

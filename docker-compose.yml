@@ -1,0 +1,14 @@
+services:
+  movie-actor-service:
+    build: .
+    image: movie-actor-service:latest
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:h2:file:/data/moviesdb
+    volumes:
+      - movie-actor-data:/data
+    restart: unless-stopped
+
+volumes:
+  movie-actor-data:
